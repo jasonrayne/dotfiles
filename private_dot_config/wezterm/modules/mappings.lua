@@ -1,76 +1,80 @@
-local wezterm = require("wezterm")
-local act = wezterm.action
+local wezterm = require 'wezterm'
+local act = wezterm.action -- Define 'act' as a local variable
 
-return {
-	leader = { key = "Space", mods = "SHIFT" },
+local M = {}
 
-	keys = {
-		{
-			key = "w",
-			mods = "CMD",
-			action = act.CloseCurrentPane({ confirm = true }),
-		},
+-- Define the leader key
+M.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1250 }
 
-		-- activate resize mode
-		{
-			key = "r",
-			mods = "LEADER",
-			action = act.ActivateKeyTable({
-				name = "resize_pane",
-				one_shot = false,
-			}),
-		},
-
-		-- focus panes
-		{
-			key = "k",
-			mods = "LEADER",
-			action = act.ActivatePaneDirection("Left"),
-		},
-		{
-			key = "i",
-			mods = "LEADER",
-			action = act.ActivatePaneDirection("Right"),
-		},
-		{
-			key = "e",
-			mods = "LEADER",
-			action = act.ActivatePaneDirection("Up"),
-		},
-		{
-			key = "n",
-			mods = "LEADER",
-			action = act.ActivatePaneDirection("Down"),
-		},
-
-		-- add new panes
-		{
-			key = "v",
-			mods = "LEADER",
-			action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
-		},
-		{
-			key = "h",
-			mods = "LEADER",
-			action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
-		},
+-- Define the keybindings
+M.keys = {
+	{
+	key = "w",
+	mods = "SUPER",
+	action = act.CloseCurrentPane({ confirm = true }),
 	},
 
-	key_tables = {
-		resize_pane = {
-			{ key = "LeftArrow", action = act.AdjustPaneSize({ "Left", 5 }) },
-			{ key = "k", action = act.AdjustPaneSize({ "Left", 5 }) },
+	-- activate resize mode
+	{
+	key = "r",
+	mods = "LEADER",
+	action = act.ActivateKeyTable({
+	name = "resize_pane",
+	one_shot = false,
+	}),
+	},
 
-			{ key = "RightArrow", action = act.AdjustPaneSize({ "Right", 5 }) },
-			{ key = "i", action = act.AdjustPaneSize({ "Right", 5 }) },
+	-- focus panes
+	{
+	key = "h",
+	mods = "LEADER",
+	action = act.ActivatePaneDirection("Left"),
+	},
+	{
+	key = "l",
+	mods = "LEADER",
+	action = act.ActivatePaneDirection("Right"),
+	},
+	{
+	key = "k",
+	mods = "LEADER",
+	action = act.ActivatePaneDirection("Up"),
+	},
+	{
+	key = "j",
+	mods = "LEADER",
+	action = act.ActivatePaneDirection("Down"),
+	},
 
-			{ key = "UpArrow", action = act.AdjustPaneSize({ "Up", 2 }) },
-			{ key = "e", action = act.AdjustPaneSize({ "Up", 2 }) },
-
-			{ key = "DownArrow", action = act.AdjustPaneSize({ "Down", 2 }) },
-			{ key = "n", action = act.AdjustPaneSize({ "Down", 2 }) },
-
-			{ key = "Escape", action = "PopKeyTable" },
-		},
+	-- add new panes
+	{
+	key = "v",
+	mods = "LEADER",
+	action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
+	{
+	key = "h",
+	mods = "LEADER",
+	action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
 }
+
+M.key_tables = {
+  resize_pane = {
+    { key = 'LeftArrow', action = act.AdjustPaneSize({ 'Left', 5 }) },
+    { key = 'h', action = act.AdjustPaneSize({ 'Left', 5 }) },
+
+    { key = 'RightArrow', action = act.AdjustPaneSize({ 'Right', 5 }) },
+    { key = 'l', action = act.AdjustPaneSize({ 'Right', 5 }) },
+
+    { key = 'UpArrow', action = act.AdjustPaneSize({ 'Up', 2 }) },
+    { key = 'k', action = act.AdjustPaneSize({ 'Up', 2 }) },
+
+    { key = 'DownArrow', action = act.AdjustPaneSize({ 'Down', 2 }) },
+    { key = 'j', action = act.AdjustPaneSize({ 'Down', 2 }) },
+
+    { key = 'Escape', action = 'PopKeyTable' },
+  },
+}
+
+return M
