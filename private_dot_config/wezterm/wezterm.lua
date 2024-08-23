@@ -8,15 +8,22 @@ end
 local wayland_gnome = require 'wayland_gnome'
 wayland_gnome.apply_to_config(config)
 
--- Show which key table is active in the status area
-wezterm.on("update-right-status", function(window)
+wezterm.on("update-right-status", function(window, pane)
   local key_table = window:active_key_table()
   local workspace = window:active_workspace()
+  local domain_name = pane:get_domain_name()
 
   local status = ""
 
   if workspace then
     status = "WORKSPACE: " .. workspace
+  end
+
+  if domain_name then
+    if #status > 0 then
+      status = status .. " | "
+    end
+    status = status .. "DOMAIN: " .. domain_name
   end
 
   if key_table then
@@ -61,62 +68,78 @@ config.key_tables = mappings.key_tables
 
 -- Enable custom workspaces
 wezterm.on('gui-startup', function(cmd)
-  -- allow `wezterm start -- <workspace>` to affect what we spawn
-  local args = {}
-  if cmd then
-    args = cmd.args
-  end
+ local args = {}
+    if cmd and cmd.args then
+      args = cmd.args
+    end
 
   -- Define the project directory
   local project_dir = wezterm.home_dir .. '/projects'
+
+   -- Function to set up another workspace (example)
+   local function setup_default_workspace()
+     local tab, main_pane, window = mux.spawn_window {
+       workspace = 'default',
+       cwd = wezterm.home_dir,
+     }
+      window:gui_window():set_inner_size(1440, 1080)
+
+     -- Split the main pane to create the editor pane
+     local secondary_pane = main_pane:split {
+       direction = 'Left',
+       size = 0.7,
+       cwd = wezterm.home_dir,
+     }
+
+     -- Set the active workspace to default
+     mux.set_active_workspace 'default'
+   end
 
   -- Function to set up the Kayobe workspace
   local function setup_kayobe_workspace()
     local tab, main_pane, window = mux.spawn_window {
       workspace = 'kayobe',
-      cwd = project_dir,
+      -- cwd = project_dir,
     }
-    window:gui_window():set_inner_size(1440, 1080)
+    window:gui_window():set_inner_size(80, 120)
 
     -- Split the main pane to create the nvim pane
     local nvim_pane = main_pane:split {
       direction = 'Left',
       size = 0.8,
-      cwd = project_dir,
+      -- cwd = project_dir,
     }
     nvim_pane:send_text 'nvim\n'
 
     -- Split the main pane to create the terminal pane in the home directory
     local terminal_pane = main_pane:split {
       direction = 'Top',
-      size = 0.5,
-      cwd = wezterm.home_dir,
+      size = 0.2,
+      -- cwd = wezterm.home_dir,
     }
-    terminal_pane:send_text 'ssh cubetail\n'
+    -- terminal_pane:send_text 'ssh cubetail\n'
 
     -- Create a second tab with four terminal panes
     local terminal_tab, t_pane = window:spawn_tab {
-      cwd = project_dir,
-    }
+	domain = { DomainName = 'SSHMUX:cubetail' }
+	}
 
     -- Split the panes in the second tab
-    local term1_pane = t_pane:split {
-      direction = 'Right',
-      size = 0.5,
-      cwd = project_dir,
-    }
-    local term2_pane = t_pane:split {
-      direction = 'Top',
-      size = 0.5,
-      cwd = project_dir,
-    }
-    term2_pane:send_text 'ssh cubetail\n'
-    local term3_pane = term1_pane:split {
-      direction = 'Top',
-      size = 0.5,
-      cwd = project_dir,
-    }
-    term3_pane:send_text 'ssh cubetail\n'
+--    local term1_pane = t_pane:split {
+--      direction = 'Right',
+--      size = 0.5,
+--      domain = { DomainName = 'SSHMUX:cubetail' }
+--    }
+--    local term2_pane = t_pane:split {
+--      direction = 'Top',
+--      size = 0.5,
+--      domain = { DomainName = 'SSHMUX:cubetail' }
+--    }
+--    local term3_pane = term1_pane:split {
+--      direction = 'Top',
+--      size = 0.5,
+--      domain = { DomainName = 'SSHMUX:cubetail' }
+--    }
 
     -- Add a small delay to ensure all panes are created
     wezterm.sleep_ms(100)
@@ -161,9 +184,12 @@ wezterm.on('gui-startup', function(cmd)
     setup_kayobe_workspace()
   elseif args[1] == 'other' then
     setup_other_workspace()
+  elseif args[1] == nil then
+    -- Default empty window setup if no argument is provided
+    setup_default_workspace()
   else
     -- Default workspace setup if no argument is provided
-    setup_kayobe_workspace()
+    setup_default_workspace()
   end
 end)
 
