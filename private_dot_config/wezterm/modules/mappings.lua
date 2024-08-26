@@ -56,8 +56,23 @@ M.keys = {
 	key = "|",
 	mods = "LEADER|SHIFT",
 	action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
-	},
+	}
 }
+	
+	-- cycle tabs
+for i = 1, 8 do
+  -- CTRL+ALT + number to activate that tab
+  table.insert(M.keys, {
+    key = tostring(i),
+    mods = 'CTRL|ALT',
+    action = act.ActivateTab(i - 1),
+  })
+  -- F1 through F8 to activate that tab
+  table.insert(M.keys, {
+    key = 'F' .. tostring(i),
+    action = act.ActivateTab(i - 1),
+  })
+end     
 
 M.key_tables = {
   resize_pane = {
