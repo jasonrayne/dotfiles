@@ -5,8 +5,8 @@ local config = {}
 if wezterm.config_builder then
    config = wezterm.config_builder()
 end
-local wayland_gnome = require 'wayland_gnome'
-wayland_gnome.apply_to_config(config)
+-- local wayland_gnome = require 'wayland_gnome'
+-- wayland_gnome.apply_to_config(config)
 
 wezterm.on("update-right-status", function(window, pane)
   local key_table = window:active_key_table()
