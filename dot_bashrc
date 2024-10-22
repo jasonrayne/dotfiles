@@ -126,3 +126,5 @@ export NVM_DIR="$HOME/.nvm"
 
 export DRI_PRIME=0
 export WAYLAND_DISPLAY='' zed
+
+source /usr/share/doc/fzf/examples/key-bindings.bash
