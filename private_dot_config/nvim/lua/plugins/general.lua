@@ -11,4 +11,7 @@ return {
     placement = 'inline', -- 'top', 'inline'
 	}
     },
+	{
+	 'ThePrimeagen/harpoon'
+	},
 }
