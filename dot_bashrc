@@ -128,3 +128,5 @@ export DRI_PRIME=0
 export WAYLAND_DISPLAY='' zed
 
 source /usr/share/doc/fzf/examples/key-bindings.bash
+
+eval "$(zoxide init bash)"
