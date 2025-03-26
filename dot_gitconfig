@@ -1,0 +1,12 @@
+[user]
+	email = jason.rayne@biamp.com
+	name = Jason Rayne
+	signingkey = 2F8DC8F316A717C2
+[merge]
+	tool = meld
+[mergetool "meld"]
+	path = /usr/bin/meld
+[mergetool]
+	prompt = false
+[commit]
+	gpgSign = true
