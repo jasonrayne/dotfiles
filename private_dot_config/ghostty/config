@@ -1,0 +1,10 @@
+clipboard-read = allow
+clipboard-write = allow
+gtk-titlebar = false
+gtk-tabs-location = bottom
+gtk-wide-tabs = false
+theme = carbonfox
+window-padding-y = 0
+window-padding-x = 10
+window-padding-balance = true
+font-family = JetBrainsMono Nerd Font
