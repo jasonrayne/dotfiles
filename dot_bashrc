@@ -121,12 +121,11 @@ eval "$(starship init bash)"
 . "$HOME/.cargo/env"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export DRI_PRIME=0
-export WAYLAND_DISPLAY='' zed
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 source /usr/share/doc/fzf/examples/key-bindings.bash
 
 eval "$(zoxide init bash)"
+
+export GPG_TTY=$(tty)

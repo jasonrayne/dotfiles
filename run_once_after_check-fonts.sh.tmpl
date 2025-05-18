@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Check if JetBrainsMono Nerd Font is properly installed
+if fc-list | grep -q "JetBrainsMono Nerd"; then
+  echo "✅ JetBrainsMono Nerd Font is properly installed"
+else
+  echo "⚠️ JetBrainsMono Nerd Font may not be properly installed"
+  echo "Running debug commands:"
+  
+  echo "Available fonts:"
+  fc-list | grep -i jetbrains
+  
+  echo "Font directories:"
+  ls -la ~/.local/share/fonts/
+  
+  echo "Attempting to fix:"
+  mkdir -p ~/.local/share/fonts/JetBrainsMono
+  
+  # Download font if not found
+  if [ ! -f ~/.local/share/fonts/JetBrainsMono/*JetBrainsMono*.ttf ]; then
+    echo "Downloading JetBrainsMono Nerd Font..."
+    curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip -o /tmp/JetBrainsMono.zip
+    unzip -o /tmp/JetBrainsMono.zip -d ~/.local/share/fonts/JetBrainsMono/
+    fc-cache -fv
+    
+    # Check again
+    if fc-list | grep -q "JetBrainsMono Nerd"; then
+      echo "✅ Font successfully installed"
+    else
+      echo "❌ Font installation failed. Please install manually."
+    fi
+  fi
+fi
