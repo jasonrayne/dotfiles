@@ -1,6 +1,6 @@
 [user]
 	email = yo@arcayne.dev
 	name = Jason Rayne
-  signingkey = A2C6EDEFE7D33DFE
+	signingkey = 234619CC74EEC867
 [commit]
 	gpgSign = true
