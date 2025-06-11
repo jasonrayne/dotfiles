@@ -1,0 +1,18 @@
+#!/bin/bash
+# Quick project initialization
+PROJECT_NAME="$1"
+PROJECT_TYPE="${2:-personal}"
+
+if [[ -z "$PROJECT_NAME" ]]; then
+    echo "Usage: dev-setup <project-name> [personal|work|contrib]"
+    exit 1
+fi
+
+PROJECT_DIR="$HOME/.local/src/$PROJECT_TYPE/$PROJECT_NAME"
+mkdir -p "$PROJECT_DIR"
+cd "$PROJECT_DIR"
+
+# Initialize git if not already
+[[ ! -d .git ]] && git init
+
+echo "Project $PROJECT_NAME ready in $PROJECT_DIR"
