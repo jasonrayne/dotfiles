@@ -1,0 +1,146 @@
+/* Carbonfox inspired Waybar theme */
+
+* {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(22, 22, 29, 0.85);
+    color: #f2f2f2;
+    border-radius: 8px;
+    border: 1px solid rgba(131, 131, 131, 0.15);
+}
+
+/* Left modules */
+#workspaces {
+    background: rgba(33, 33, 40, 0.8);
+    border-radius: 4px;
+    margin: 1px 0px 1px 6px;
+    padding: 0px 4px;
+}
+
+#workspaces button {
+    padding: 1px 4px;
+    border-radius: 2px;
+    background: transparent;
+    color: #7a7a7a;
+    border: none;
+    margin: 1px;
+    transition: all 0.2s ease-in-out;
+    min-height: 16px;
+}
+
+#workspaces button.active {
+    background: #78a9ff;
+    color: #161820;
+    font-weight: bold;
+}
+
+#workspaces button:hover {
+    background: rgba(120, 169, 255, 0.3);
+    color: #f2f2f2;
+}
+
+#window {
+    background: rgba(33, 33, 40, 0.8);
+    border-radius: 4px;
+    margin: 1px 6px;
+    padding: 1px 8px;
+    color: #78a9ff;
+    font-weight: 500;
+}
+
+/* Center module */
+#clock {
+    background: rgba(33, 33, 40, 0.8);
+    border-radius: 4px;
+    margin: 1px 6px;
+    padding: 1px 10px;
+    color: #08bdba;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* Right modules */
+#cpu,
+#memory,
+#pulseaudio,
+#network,
+#tray {
+    background: rgba(33, 33, 40, 0.8);
+    border-radius: 4px;
+    margin: 1px 1px;
+    padding: 1px 6px;
+    color: #f2f2f2;
+}
+
+#cpu {
+    color: #78a9ff;
+}
+
+#memory {
+    color: #be95ff;
+}
+
+#pulseaudio {
+    color: #3ddbd9;
+}
+
+#pulseaudio.muted {
+    color: #ff7eb6;
+}
+
+#network {
+    color: #42be65;
+}
+
+#network.disconnected {
+    color: #ff8389;
+}
+
+#battery {
+    color: #82cfff;
+}
+
+#battery.charging {
+    color: #42be65;
+}
+
+#battery.warning:not(.charging) {
+    color: #ffab91;
+}
+
+#battery.critical:not(.charging) {
+    color: #ff8389;
+    animation: blink 1s linear infinite alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: rgba(255, 131, 137, 0.3);
+    }
+}
+
+#tray {
+    padding: 2px 6px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: rgba(120, 169, 255, 0.3);
+}
+
+#custom-power {
+    background: rgba(33, 33, 40, 0.8);
+    border-radius: 4px;
+    margin: 1px 6px 1px 1px;
+    padding: 1px 6px;
+    color: #ff8389;
+    font-weight: bold;
+}
