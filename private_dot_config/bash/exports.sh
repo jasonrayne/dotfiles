@@ -39,9 +39,9 @@ export TERM_PROGRAM=ghostty
 
 # Terminal compatibility for SSH
 if [[ -n "$SSH_CONNECTION" ]]; then
-    export TERM="xterm-256color"
+  export TERM="xterm-256color"
 else
-    export TERM="${TERM:-xterm-ghostty}"
+  export TERM="${TERM:-xterm-ghostty}"
 fi
 
 # Add ~/.local to PATH
@@ -55,17 +55,26 @@ bleopt complete_auto_history=1
 bleopt complete_auto_delay=300
 
 # Visual tweaks
-bleopt highlight_syntax=1                   # Enable syntax highlighting with carbonfox colors
-bleopt highlight_variable=                  # No variable highlighting  
-bleopt highlight_filename=                  # No filename highlighting
-bleopt complete_menu_color=off              # No menu background colors
-bleopt complete_menu_style=desc-raw         # Simple menu style
-bleopt complete_menu_color_match=none       # No match highlighting
-bleopt complete_menu_filter=                # No filter highlighting
-bleopt complete_skip_matched=off            # Don't highlight matched portions
-bleopt edit_abell=                          # No bell
-bleopt canvas_winch_action=clear            # Clean redraws
+bleopt highlight_syntax=1             # Enable syntax highlighting with carbonfox colors
+bleopt highlight_variable=            # No variable highlighting
+bleopt highlight_filename=            # No filename highlighting
+bleopt complete_menu_color=off        # No menu background colors
+bleopt complete_menu_style=desc-raw   # Simple menu style
+bleopt complete_menu_color_match=none # No match highlighting
+bleopt complete_menu_filter=          # No filter highlighting
+bleopt complete_skip_matched=off      # Don't highlight matched portions
+bleopt edit_abell=                    # No bell
+bleopt canvas_winch_action=clear      # Clean redraws
 
 # Disable ble.sh exit messages
 bleopt exec_exit_mark=
 bleopt exec_errexit_mark=
+
+# Disable ble.sh key sequence recognition
+bleopt decode_error_char_vbell=
+bleopt decode_error_cseq_vbell=
+bleopt decode_error_kseq_vbell=
+bleopt decode_error_kseq_abell=
+
+# Also disable the visual bell entirely
+bleopt vbell_duration=0
