@@ -37,13 +37,6 @@ export GPG_TTY=$(tty)
 # Ghostty/terminal specific
 export TERM_PROGRAM=ghostty
 
-# Terminal compatibility for SSH
-if [[ -n "$SSH_CONNECTION" ]]; then
-  export TERM="xterm-256color"
-else
-  export TERM="${TERM:-xterm-ghostty}"
-fi
-
 # Add ~/.local to PATH
 export PATH="$HOME/.local/bin:$PATH"
 
