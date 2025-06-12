@@ -3,226 +3,52 @@ gui:
   theme:
     lightTheme: false
     activeBorderColor:
-      - "#78a9ff"
+      - '#78a9ff'
       - bold
     inactiveBorderColor:
-      - "#393939"
+      - '#393939'
     optionsTextColor:
-      - "#b6b8bb"
+      - '#b6b8bb'
     selectedLineBgColor:
-      - "#282c34"
+      - '#282c34'
     cherryPickedCommitBgColor:
-      - "#ee5396"
+      - '#ee5396'
     cherryPickedCommitFgColor:
-      - "#161616"
+      - '#161616'
     unstagedChangesColor:
-      - "#ff8389"
+      - '#ff8389'
     defaultFgColor:
-      - "#f2f4f8"
-
-  # UI preferences
+      - '#f2f4f8'
+  
+  # Basic UI preferences
   showListFooter: true
   showFileTree: true
   showRandomTip: false
   showCommandLog: false
-  commandLogSize: 8
-
-  # Window splitting
-  splitDiff: auto
-
+  
   # Commit length
   commitLength:
     show: true
 
 # Git configuration
 git:
-  # Auto-fetch
+  # Auto-fetch and refresh
   autoFetch: true
   autoRefresh: true
-
-  # Merging
-  merging:
-    manualCommit: false
-    args: ""
-
-  # Pulling
+  
+  # Pulling preference
   pull:
-    mode: "rebase"
-
-  # Pushing
-  skipHookPrefix: WIP
-
-  # Log
+    mode: 'rebase'
+  
+  # Log display
   log:
-    order: "topo-order"
-    showGraph: "when-maximised"
-
-  # Commit prefixes for skipping hooks
-  commitPrefixes:
-    my-prefix: !my-prefix # Custom commands
-
-
-customCommands:
-  - key: "C"
-    command: "git cz"
-    description: "commit with commitizen"
-    context: "files"
-    loadingText: "opening commitizen commit tool"
-    subprocess: true
-
-# Key bindings (vim-style)
-keybinding:
-  universal:
-    quit: "q"
-    quit-alt1: "<c-c>"
-    return: "<esc>"
-    quitWithoutChangingDirectory: "Q"
-    togglePanel: "<tab>"
-    prevItem: "<up>"
-    nextItem: "<down>"
-    prevItem-alt: "k"
-    nextItem-alt: "j"
-    prevPage: ","
-    nextPage: "."
-    gotoTop: "<"
-    gotoBottom: ">"
-    scrollLeft: "H"
-    scrollRight: "L"
-    prevBlock: "<left>"
-    nextBlock: "<right>"
-    prevBlock-alt: "h"
-    nextBlock-alt: "l"
-    jumpToBlock:
-      - "1"
-      - "2"
-      - "3"
-      - "4"
-      - "5"
-    nextMatch: "n"
-    prevMatch: "N"
-    optionMenu-alt1: "?"
-    select: "<space>"
-    goInto: "<enter>"
-    openRecentRepos: "<c-r>"
-    confirm-alt1: "y"
-    remove: "d"
-    new: "n"
-    edit: "e"
-    openFile: "o"
-    scrollUpMain: "<pgup>"
-    scrollDownMain: "<pgdown>"
-    scrollUpMain-alt1: "K"
-    scrollDownMain-alt1: "J"
-    scrollUpMain-alt2: "<c-u>"
-    scrollDownMain-alt2: "<c-d>"
-    executeCustomCommand: ":"
-    createRebaseOptionsMenu: "m"
-    pushFiles: "P"
-    pullFiles: "p"
-    refresh: "R"
-    createPatchOptionsMenu: "<c-p>"
-    nextTab: "]"
-    prevTab: "["
-    nextScreenMode: "+"
-    prevScreenMode: "_"
-    undo: "z"
-    redo: "<c-z>"
-    filteringMenu: "<c-s>"
-    diffingMenu: "W"
-    diffingMenu-alt: "<c-e>"
-    copyToClipboard: "<c-o>"
-    submitEditorText: "<enter>"
-    appendNewline: "<a-enter>"
-    extrasMenu: "@"
-    toggleWhitespaceInDiffView: "<c-w>"
-
-  status:
-    checkForUpdate: "u"
-    recentRepos: "<enter>"
-
-  files:
-    commitChanges: "c"
-    commitChangesWithoutHook: "w"
-    amendLastCommit: "A"
-    commitChangesWithEditor: "C"
-    ignoreFile: "i"
-    refreshFiles: "r"
-    stashAllChanges: "s"
-    viewStashOptions: "S"
-    toggleStagedAll: "a"
-    viewResetOptions: "D"
-    fetch: "f"
-    toggleTreeView: "`"
-
-  branches:
-    createPullRequest: "o"
-    viewPullRequestOptions: "O"
-    checkoutBranchByName: "c"
-    forceCheckoutBranch: "F"
-    rebaseBranch: "r"
-    renameBranch: "R"
-    mergeIntoCurrentBranch: "M"
-    viewGitFlowOptions: "i"
-    fastForward: "f"
-    pushTag: "P"
-    setUpstream: "u"
-    fetchRemote: "f"
-
-  commits:
-    squashDown: "s"
-    renameCommit: "r"
-    renameCommitWithEditor: "R"
-    viewResetOptions: "g"
-    markCommitAsFixup: "f"
-    createFixupCommit: "F"
-    squashAboveCommits: "S"
-    moveDownCommit: "<c-j>"
-    moveUpCommit: "<c-k>"
-    amendToCommit: "A"
-    pickCommit: "p"
-    revertCommit: "t"
-    cherryPickCopy: "c"
-    cherryPickCopyRange: "C"
-    pasteCommits: "v"
-    tagCommit: "T"
-    checkoutCommit: "<space>"
-    resetCherryPick: "<c-R>"
-    copyCommitMessageToClipboard: "<c-y>"
-
-  stash:
-    popStash: "g"
-    renameStash: "r"
-
-  commitFiles:
-    checkoutCommitFile: "c"
-
-  main:
-    toggleDragSelect: "v"
-    toggleSelectHunk: "a"
-    pickBothHunks: "b"
-
-  submodules:
-    init: "i"
-    update: "u"
-    bulkMenu: "b"
-
-# Confirmation prompts
-confirmOnQuit: false
-
-# Performance
-refresher:
-  refreshInterval: 10
-  fetchInterval: 60
-
-# OS specific
-os:
-  editCommand: "nvim"
-  editCommandTemplate: "{{editor}} {{filename}}"
-  openCommand: "xdg-open {{filename}}"
+    order: 'topo-order'
+    showGraph: 'when-maximised'
 
 # Disable update checks
 update:
   method: never
 
-# Logging
-notARepository: "skip"
+# Editor preference
+os:
+  editCommand: 'nvim'
