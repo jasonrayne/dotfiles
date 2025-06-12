@@ -18,16 +18,16 @@ return {
         "typescript",
         "vim",
         "yaml",
-        
+
         -- Additional parsers for Snacks.image support
         "css",
-        "latex", 
-        "norg",      -- Neorg note-taking format
+        "latex",
+        "norg", -- Neorg note-taking format
         "scss",
         "svelte",
-        "typst",     -- Modern LaTeX alternative
+        "typst", -- Modern LaTeX alternative
         "vue",
-        
+
         -- Additional useful parsers
         "dockerfile",
         "go",
@@ -35,7 +35,6 @@ return {
         "toml",
         "terraform",
         "hcl",
-        "ansible",
       },
     },
   },
