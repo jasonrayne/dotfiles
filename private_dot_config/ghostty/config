@@ -1,5 +1,6 @@
 clipboard-read = allow
 clipboard-write = allow
+clipboard-trim-trailing-spaces = true
 gtk-titlebar = false
 gtk-tabs-location = bottom
 gtk-wide-tabs = false
@@ -8,4 +9,5 @@ window-padding-y = 0
 window-padding-x = 10
 window-padding-balance = true
 font-family = JetBrainsMono Nerd Font
-cursor_style = block
+cursor-style = block
+confirm-close-surface = false
