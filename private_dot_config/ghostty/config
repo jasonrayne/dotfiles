@@ -8,3 +8,4 @@ window-padding-y = 0
 window-padding-x = 10
 window-padding-balance = true
 font-family = JetBrainsMono Nerd Font
+cursor_style = block
