@@ -142,10 +142,13 @@ j() {
   dir=$(find ${1:-.} -type d 2>/dev/null | fzf +m) && cd "$dir"
 }
 
-ssh() {
-  if [[ "$TERM" == "xterm-ghostty" ]]; then
-    TERM=xterm-256color command ssh "$@"
-  else
-    command ssh "$@"
-  fi
-}
+# SSH wrapper to enable better Ghostty compatibility
+# Disabled while testing new ssh-integration feature
+# To be removed once feature is merged upstream
+#ssh() {
+#  if [[ "$TERM" == "xterm-ghostty" ]]; then
+#    TERM=xterm-256color command ssh "$@"
+#  else
+#    command ssh "$@"
+#  fi
+#}
