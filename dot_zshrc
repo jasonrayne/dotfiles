@@ -1,0 +1,12 @@
+# Powerlevel10k instant prompt - must be first
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Load modular configuration
+for config in ~/.config/zsh/{base,exports,aliases,functions,work}.zsh; do
+    [[ -r "$config" ]] && source "$config"
+done
+
+# Load p10k theme config
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
