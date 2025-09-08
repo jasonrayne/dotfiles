@@ -1,0 +1,35 @@
+# README should not be applied to home directory
+README.md
+
+# Hyprland/Wayland configs - only for machines with hyprland desktop
+{{- if ne .desktop "hyprland" }}
+.config/hypr/
+.config/waybar/
+.config/rofi/
+.config/wlogout/
+{{- end }}
+
+# Work/Personal specific files
+{{- if not .work }}
+# Personal machine - ignore work-specific configs
+.config/bash/work.sh
+{{- end }}
+
+# OS-specific ignores
+{{- if ne .chezmoi.os "linux" }}
+.config/
+.local/bin/
+{{- end }}
+
+# Distribution-specific ignores
+{{- if and (eq .chezmoi.os "linux") (ne .chezmoi.osRelease.id "arch") }}
+# Not Arch Linux - ignore Arch-specific files
+.config/yay/
+.config/zsh/
+.p10k.zsh
+.zshrc
+{{- end }}
+
+{{- if and (eq .chezmoi.os "linux") (ne .chezmoi.osRelease.id "ubuntu") }}
+# Not Ubuntu - ignore Ubuntu-specific files
+{{- end }}
