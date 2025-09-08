@@ -3,10 +3,34 @@
 [pull]
 	rebase = false
 [user]
-	email = yo@arcayne.dev
-	name = Jason Rayne
-	signingkey = F83559D60D3506E9
+    name = Jason Rayne
+    email = {{ .email }}
+{{- if .signingkey }}
+    signingkey = {{ .signingkey }}
+{{- end }}
 [commit]
-	gpgsign = true
+{{- if .signingkey }}
+    gpgsign = true
+{{- else }}
+    gpgsign = false
+{{- end }}
+[merge]
+  tool = meld
+[mergetool "meld"]
+  path = /usr/bin/meld
+[mergetool]
+  prompt = false
+[filter "lfs"]
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+[gitreview]
+  username = jasonrayne
+{{- if .signingkey }}
+    gpgsign = true
+{{- else }}
+    gpgsign = false
+{{- end }}
 [gpg]
 	program = gpg
