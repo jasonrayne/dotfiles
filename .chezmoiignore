@@ -1,6 +1,10 @@
 # README should not be applied to home directory
 README.md
 
+# Neovim-specific ignores
+.config/nvim/lazy-lock.json
+
+
 # Hyprland/Wayland configs - only for machines with hyprland desktop
 {{- if ne .desktop "hyprland" }}
 .config/hypr/
