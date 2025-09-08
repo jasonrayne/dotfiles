@@ -1,18 +1,18 @@
 [init]
 	defaultBranch = main
 [pull]
-	rebase = false
+  rebase = false
 [user]
-    name = Jason Rayne
-    email = {{ .email }}
+  name = Jason Rayne
+  email = {{ .email }}
 {{- if .signingkey }}
-    signingkey = {{ .signingkey }}
+  signingkey = {{ .signingkey }}
 {{- end }}
 [commit]
 {{- if .signingkey }}
-    gpgsign = true
+  gpgsign = true
 {{- else }}
-    gpgsign = false
+  gpgsign = false
 {{- end }}
 [merge]
   tool = meld
@@ -28,9 +28,9 @@
 [gitreview]
   username = jasonrayne
 {{- if .signingkey }}
-    gpgsign = true
+  gpgsign = true
 {{- else }}
-    gpgsign = false
+  gpgsign = false
 {{- end }}
 [gpg]
 	program = gpg
