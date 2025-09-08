@@ -1,8 +1,8 @@
 # Core file operations (minimal as requested)
-alias ls="exa --icons --group-directories-first"
-alias ll="exa -la --icons --group-directories-first --git"
-alias la="exa -a --icons --group-directories-first"
-alias lt="exa --tree --level=2 --icons"
+alias ls="eza --icons --group-directories-first"
+alias ll="eza -la --icons --group-directories-first --git"
+alias la="eza -a --icons --group-directories-first"
+alias lt="eza --tree --level=2 --icons"
 
 # Safe operations
 alias cp='cp -i'
