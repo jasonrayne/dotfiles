@@ -1,3 +1,16 @@
+{{- $email := promptStringOnce . "email" "Email address for git" -}}
+{{- $signingkey := promptStringOnce . "signingkey" "GPG signing key ID (leave empty if none)" -}}
+{{- $work := promptBoolOnce . "work" "Is this a work machine" -}}
+{{- $desktop := promptStringOnce . "desktop" "Desktop environment (gnome/kde/hyprland/etc)" -}}
+
+[data]
+email = {{ $email | quote }}
+signingkey = {{ $signingkey | quote }}
+work = {{ $work }}
+desktop = {{ $desktop | quote }}
+# Derive purpose from work flag
+purpose = {{ if $work }}"work"{{ else }}"personal"{{ end }}
+
 [git]
-    autoCommit = true
-    autoPush = true
+autoCommit = true
+autoPush = true
