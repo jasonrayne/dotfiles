@@ -13,6 +13,8 @@ if [[ $(hostname) == BSI-US-* ]]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   eval "$(zoxide init bash)"
   eval "$(starship init bash)"
+  eval "$(mise activate bash)"
+
   . "$HOME/.cargo/env"
 
   alias claude="/home/jrayne/.claude/local/claude"

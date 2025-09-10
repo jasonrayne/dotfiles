@@ -36,3 +36,6 @@ alias gd='git diff'
 # Docker/container stuff
 alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
 alias dls='docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}"'
+
+# Openstack
+alias os='openstack'
