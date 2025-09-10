@@ -9,6 +9,25 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
+# Basic cat replacement
+alias cat='bat'
+alias oldcat='/bin/cat'
+
+# Show line numbers (equivalent to cat -n)
+alias catn='bat --number'
+
+# Plain output without decorations (equivalent to plain cat)
+alias catp='bat --plain'
+
+# Show all characters including non-printable (equivalent to cat -A)
+alias cata='bat --show-all'
+
+# Pager disabled for short files (equivalent to cat behavior)
+alias catl='bat --paging=never'
+
+# With grid and line numbers for code review
+alias catg='bat --style=grid,numbers'
+
 # Navigation helpers
 alias ..='cd ..'
 alias ...='cd ../..'
