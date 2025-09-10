@@ -47,6 +47,11 @@ alias localip="ip route get 1.1.1.1 | awk '{print \$7}'"
 alias bashrc='$EDITOR ~/.bashrc'
 alias nvimrc='$EDITOR ~/.config/nvim/init.lua'
 
+# Better diff with delta
+alias diff='delta'
+alias diffc='delta --side-by-side' # side-by-side view
+alias diffn='delta --line-numbers' # with line numbers
+
 # Git shortcuts (but not too many)
 alias gs='git status'
 alias gl='git log --oneline --graph --decorate --all'
