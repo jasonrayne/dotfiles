@@ -63,3 +63,6 @@ alias dls='docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}"'
 
 # Openstack
 alias os='openstack'
+
+# AI
+alias claude="~/.claude/local/claude"

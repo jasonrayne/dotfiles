@@ -20,3 +20,33 @@ if [[ $(hostname) == BSI-US-* ]]; then
   alias claude="/home/jrayne/.claude/local/claude"
   alias pynvim="/home/jrayne/.local/bin/pynvim-python"
 fi
+
+# OpenStack cloud switchers
+## For regular project switching (admin credentials)
+os_project() {
+  if [ $# -eq 0 ]; then
+    echo "Usage: os_project <project_name>"
+    return 1
+  fi
+
+  export OS_CLOUD=biamp-cloud # Force back to admin cloud
+  export OS_PROJECT_NAME=$1
+  export OS_PROJECT_DOMAIN_NAME=default
+}
+
+## For app credential switching
+os_user() {
+  if [ $# -eq 0 ]; then
+    echo "Usage: os_user <app_cred_cloud_name>"
+    echo "Available: fed-eng-production, fed-corp-lab, etc."
+    return 1
+  fi
+
+  export OS_CLOUD=$1
+  unset OS_PROJECT_NAME
+  unset OS_PROJECT_DOMAIN_NAME
+}
+
+## Aliases
+alias os-switch='os_project'
+alias os-user='os_user'
