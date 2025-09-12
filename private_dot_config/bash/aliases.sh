@@ -10,7 +10,7 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 # Basic cat replacement
-alias cat='bat'
+alias cat='bat -p'
 alias oldcat='/bin/cat'
 
 # Show line numbers (equivalent to cat -n)
@@ -26,7 +26,7 @@ alias cata='bat --show-all'
 alias catl='bat --paging=never'
 
 # With grid and line numbers for code review
-alias catg='bat --style=grid,numbers'
+alias catg='bat'
 
 # Navigation helpers
 alias ..='cd ..'

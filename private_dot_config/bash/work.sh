@@ -25,7 +25,7 @@ fi
 ## For regular project switching (admin credentials)
 os_project() {
   if [ $# -eq 0 ]; then
-    echo "Usage: os_project <project_name>"
+    echo "Usage: os-switch <project_name>"
     return 1
   fi
 
@@ -37,8 +37,7 @@ os_project() {
 ## For app credential switching
 os_user() {
   if [ $# -eq 0 ]; then
-    echo "Usage: os_user <app_cred_cloud_name>"
-    echo "Available: fed-eng-production, fed-corp-lab, etc."
+    echo "Usage: os-user <app_cred_cloud_name>"
     return 1
   fi
 
