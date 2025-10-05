@@ -3,7 +3,7 @@ if [[ $(hostname) == BSI-US-* ]]; then
   source /usr/share/doc/fzf/examples/key-bindings.bash
   source <(openstack complete 2>/dev/null)
 
-  export PATH=$PATH:/usr/local/go/bin
+  export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
   export TMUX_CONFIG_DIR="$HOME/.config/tmux"
   export OS_CLOUD=biamp-cloud
   export NVM_DIR="$HOME/.config/nvm"
@@ -49,3 +49,4 @@ os_user() {
 ## Aliases
 alias os-switch='os_project'
 alias os-user='os_user'
+alias gemini='ssh cubetail -t "$HOME/.local/share/gem/ruby/3.0.0/bin/tmuxinator start gemini"'

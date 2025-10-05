@@ -7,5 +7,10 @@
 
 # Load modular configs
 for config in ~/.config/bash/*.sh; do
-    [[ -r "$config" ]] && source "$config"
+  [[ -r "$config" ]] && source "$config"
 done
+
+. "$HOME/.local/share/../bin/env"
+
+# opencode
+export PATH=/home/jrayne/.opencode/bin:$PATH

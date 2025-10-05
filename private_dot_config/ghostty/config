@@ -4,14 +4,15 @@ clipboard-trim-trailing-spaces = true
 gtk-titlebar = false
 gtk-tabs-location = bottom
 gtk-wide-tabs = false
-theme = carbonfox
+theme = Carbonfox
 window-padding-y = 0
 window-padding-x = 10
 window-padding-balance = true
 font-family = JetBrainsMono Nerd Font
-shell-integration-features = no-cursor
+shell-integration-features = no-cursor,ssh-terminfo,ssh-env
 cursor-style = block
 cursor-style-blink = false
 mouse-hide-while-typing = true
 confirm-close-surface = false
 # custom-shader = ./shaders/glow-rgbsplit-twitchy.glsl
+keybind = shift+enter=text:\x1b\r

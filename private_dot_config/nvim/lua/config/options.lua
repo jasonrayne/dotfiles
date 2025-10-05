@@ -51,16 +51,22 @@ vim.filetype.add({
   },
 })
 
-vim.diagnostic.enable(false)
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
 
--- snacks debugging
-local original_select = vim.ui.select
-vim.ui.select = function(items, opts, on_choice)
-  if #items == 0 then
-    print("DEBUG: vim.ui.select called with no items!")
-    print("DEBUG: opts:", vim.inspect(opts))
-    print("DEBUG: Stack trace:")
-    print(debug.traceback())
-  end
-  return original_select(items, opts, on_choice)
-end
+-- Configure LSP file watching behavior
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(event)
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
+    if client and client.server_capabilities.workspace then
+      -- Disable dynamic registration for file watchers
+      -- This can help reduce CPU usage and prevent file watching issues in large projects
+      if client.server_capabilities.workspace.didChangeWatchedFiles then
+        client.server_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
+      end
+    end
+  end,
+})
+
+-- Faster CursorHold events (affects some plugins, LSP hover, etc.)
+vim.opt.updatetime = 250
