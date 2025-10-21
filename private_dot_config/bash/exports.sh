@@ -37,5 +37,5 @@ export GPG_TTY=$(tty)
 # Ghostty/terminal specific
 export TERM_PROGRAM=ghostty
 
-# Add ~/.local to PATH
-export PATH="$HOME/.local/bin:$PATH"
+# PATH additions
+export PATH="$HOME/.opencode/bin:$PATH"

@@ -3,7 +3,7 @@ if [[ $(hostname) == BSI-US-* ]]; then
   source /usr/share/doc/fzf/examples/key-bindings.bash
   source <(openstack complete 2>/dev/null)
 
-  export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+  PATH="$PATH:/usr/local/go/bin:$HOME/go/bin"
   export TMUX_CONFIG_DIR="$HOME/.config/tmux"
   export OS_CLOUD=biamp-cloud
   export NVM_DIR="$HOME/.config/nvm"
@@ -12,13 +12,10 @@ if [[ $(hostname) == BSI-US-* ]]; then
 
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   eval "$(zoxide init bash)"
-  eval "$(starship init bash)"
   eval "$(mise activate bash)"
 
   . "$HOME/.cargo/env"
 
-  alias claude="/home/jrayne/.claude/local/claude"
-  alias pynvim="/home/jrayne/.local/bin/pynvim-python"
 fi
 
 # OpenStack cloud switchers
@@ -50,3 +47,4 @@ os_user() {
 alias os-switch='os_project'
 alias os-user='os_user'
 alias gemini='ssh cubetail -t "$HOME/.local/share/gem/ruby/3.0.0/bin/tmuxinator start gemini"'
+alias pynvim="/home/jrayne/.local/bin/pynvim-python"

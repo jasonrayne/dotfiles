@@ -617,3 +617,22 @@ gsp() {
 #    command ssh "$@"
 #  fi
 #}
+
+# Deduplicate PATH
+dedupe_path() {
+    if [ -n "$PATH" ]; then
+        local old_PATH=$PATH:
+        PATH=
+        while [ -n "$old_PATH" ]; do
+            local dir=${old_PATH%%:*}  # Get first directory
+            if [ -n "$dir" ] && [ -d "$dir" ]; then
+                case ":$PATH:" in
+                    *":$dir:"*) ;;  # Already in PATH, skip
+                    *) PATH=$PATH${PATH:+:}$dir ;;  # Add to PATH
+                esac
+            fi
+            old_PATH=${old_PATH#*:}  # Remove first directory
+        done
+    fi
+    export PATH
+}
