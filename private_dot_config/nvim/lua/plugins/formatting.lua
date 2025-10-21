@@ -29,8 +29,8 @@ return {
         -- Lua: stylua (respects stylua.toml, .stylua.toml)
         lua = { "stylua" },
 
-        -- Go: standard tools
-        go = { "goimports", "gofmt" },
+        -- Go: goimports (includes gofmt functionality + import management)
+        go = { "goimports" },
 
         -- Shell: shfmt (respects .editorconfig)
         sh = { "shfmt" },
